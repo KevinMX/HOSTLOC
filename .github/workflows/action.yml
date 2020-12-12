@@ -2,6 +2,8 @@ name: 'Hostloc Auto Get Points'
 
 on:
   push:
+    branches: 
+      - master
   schedule:
     - cron: '0 19 * * *'
 
@@ -16,7 +18,7 @@ jobs:
       with:
         python-version: '3.x'
     - name: 'Install dependencies'
-      run: python -m pip install --upgrade requests
+      run: python -m pip install --upgrade requests pyaes
     - name: 'Get points'
       env:
         HOSTLOC_USERNAME: ${{ secrets.HOSTLOC_USERNAME }}
